@@ -4,7 +4,8 @@ using namespace std;
 int algoA(const int a[], int sz)
 {
 
-    int max, sum = 0;
+    int max = 0;
+    int sum = 0;
 
     for (int i = 0; i < sz; i++)
     {   
@@ -39,12 +40,13 @@ int algoA(const int a[], int sz)
 
 int main()
 {   
-    /*
+    cout << "=========================  ARRY A =========================   \n";
     int a = 7;
     int Arry[] = {9, 1, -16, 4, 12, -8, 6};
     algoA(Arry, a); //expected 16
-    */
+    
 
+    cout << "=========================  ARRY B =========================   \n";
     int b = 6;
     int ArryB[] = {2, -7, 3, 4, -2, 1};
     algoA(ArryB, b); // expected 7
