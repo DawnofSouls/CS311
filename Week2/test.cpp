@@ -15,10 +15,10 @@ int algoA(const int a[], int sz)
         {   
             //cout << "j: " << j << endl;
 
-            int start = j;
+            //int start = j;
             int end = j + i;
 
-            for(start; start<=end; start++)
+            for(int start = j; start<=end; start++)
             {   
                 //cout << "Array["<< start << " - " << end <<"] = " <<a[start] << endl;
                 
