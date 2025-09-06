@@ -27,7 +27,7 @@ int algoA(const int a[], int sz)
             if (max < sum)
             {
                 max = sum;
-                cout << "New Max: " << max << endl;
+                cout << "------------------ NEW MAX: " << max <<" ------------------" << endl;
             }
             sum = 0;
 
@@ -38,9 +38,15 @@ int algoA(const int a[], int sz)
 };
 
 int main()
-{
-    int n = 7;
+{   
+    /*
+    int a = 7;
     int Arry[] = {9, 1, -16, 4, 12, -8, 6};
+    algoA(Arry, a); //expected 16
+    */
 
-    algoA(Arry, n);
+    int b = 6;
+    int ArryB[] = {2, -7, 3, 4, -2, 1};
+    algoA(ArryB, b); // expected 7
+
 }
