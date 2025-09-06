@@ -9,26 +9,26 @@ int algoA(const int a[], int sz)
 
     for (int i = 0; i < sz; i++)
     {   
-        cout << "i: " << i << endl;
+        //cout << "i: " << i << endl;
 
         for (int j = 0; j + i < sz; j++)
         {   
-            cout << "j: " << j << endl;
+            //cout << "j: " << j << endl;
 
             int start = j;
             int end = j + i;
 
             for(start; start<=end; start++)
             {   
-                cout << "Array["<< start << " - " << end <<"] = " <<a[start] << endl;
+                //cout << "Array["<< start << " - " << end <<"] = " <<a[start] << endl;
                 
                 sum+=a[start];
-                cout << "Sum: " << sum << endl;
+                //cout << "Sum: " << sum << endl;
             }
             if (max < sum)
             {
                 max = sum;
-                cout << "------------------ NEW MAX: " << max <<" ------------------" << endl;
+                //cout << "------------------ NEW MAX: " << max <<" ------------------" << endl;
             }
             sum = 0;
 
