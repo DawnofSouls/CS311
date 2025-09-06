@@ -17,9 +17,9 @@ int algoA(const int a[], int sz)
             int start = j;
             int end = j + i;
 
-            for(start = 0; start<=end; start++)
+            for(start; start<=end; start++)
             {   
-                cout << "Array["<< start <<"]: " <<a[start] << endl;
+                cout << "Array["<< start << " - " << end <<"] = " <<a[start] << endl;
                 
                 sum+=a[start];
                 cout << "Sum: " << sum << endl;
@@ -27,6 +27,7 @@ int algoA(const int a[], int sz)
             if (max < sum)
             {
                 max = sum;
+                cout << "New Max: " << max << endl;
             }
             sum = 0;
 
