@@ -62,8 +62,8 @@ int algoB(const int a[], int sz)
         sum = 0;
     }
 
-    return max;
     cout << max << "\n";
+    return max;
 }
 
 int main()
