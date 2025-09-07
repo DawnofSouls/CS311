@@ -66,6 +66,33 @@ int algoB(const int a[], int sz)
     return max;
 }
 
+
+int algoC(const int a[], int sz)
+{ 
+    
+    int sum = 0;
+    int max = 0;
+
+    for (int i = 0; i<sz; i++ ){
+
+        sum+=a[i];
+
+        if(sum < 0){
+            sum = 0;
+        }
+
+        if (max < sum){
+            max = sum;
+        }
+
+
+
+    }   
+
+    cout << max << "\n";
+    return max;
+}
+
 int main()
 {   
     /*
@@ -124,7 +151,7 @@ int main()
     cout << "Expected: 12\n";
     algoA(ArryI, i); // expected 12
 
-    */
+    
 
     cout << "=========================  ARRY J (ALGO B) =========================   \n";
     int j = 7;
@@ -168,6 +195,11 @@ int main()
     cout << "Expected: 18\n";
     algoB(ArryP, p);
 
+    */
+
+    int size = 8;
+    int ArryTest[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+    algoC(ArryTest, size); //expected 7
 
 }
 
