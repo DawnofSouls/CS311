@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+
 int algoA(const int a[], int sz)
 {
 
