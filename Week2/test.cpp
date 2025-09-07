@@ -39,8 +39,36 @@ int algoA(const int a[], int sz)
     return max;
 };
 
+int algoB(const int a[], int sz)
+{
+
+    int max = 0;
+    int sum = 0;
+
+    for (int i = 0; i < sz; i++)
+    {
+
+        for (int j = i; j < sz; j++)
+        {
+
+            sum += a[j];
+
+            if (sum > max)
+            {
+                max = sum;
+            }
+        }
+
+        sum = 0;
+    }
+
+    return max;
+    cout << max << "\n";
+}
+
 int main()
 {   
+    /*
     cout << "=========================  ARRY A =========================   \n";
     int a = 7;
     int Arry[] = {9, 1, -16, 4, 12, -8, 6};
@@ -95,6 +123,14 @@ int main()
     int ArryI[] = {7, -5, 3, 4, -2, -1, 6, -8, 5, -3, 2, 1};
     cout << "Expected: 12\n";
     algoA(ArryI, i); // expected 12
+
+    */
+
+    int size = 7;
+    int Arry2[] = {9,1,-16,4,12,-8,6};
+
+    algoB(Arry2, size);
+
 
 }
 
