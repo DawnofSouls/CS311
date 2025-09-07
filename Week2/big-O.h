@@ -1,10 +1,10 @@
 /************************************************************************
 CS311 Kazumi Slott
 
-Your name:
-Your program number:
-Hours spent:
-Describe any difficulties here: 
+Your name: Agustin Martinez
+Your program number: 24
+Hours spent: 6 hours
+Describe any difficulties here: In Algo A, I couldn't find a better way to make one without doing an O(n^3) time complexity
 
 Experiment:                             (in milliseconds)
                                         AlgoA       AlgoB      AlgoC
