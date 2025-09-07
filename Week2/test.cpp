@@ -197,9 +197,65 @@ int main()
 
     */
 
-    int size = 8;
-    int ArryTest[] = {-2, -3, 4, -1, -2, 1, 5, -3};
-    algoC(ArryTest, size); //expected 7
+    cout << "=========================  ARRY Q (ALGO C) =========================   \n";
+    int q = 8;
+    int ArryQ[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+    cout << "Expected: 7\n";  
+    algoC(ArryQ, q);
+
+    cout << "=========================  ARRY R (ALGO C) =========================   \n";
+    int r = 4;
+    int ArryR[] = {-1, -2, -3, -4};
+    cout << "Expected: 0\n";    
+    algoC(ArryR, r);
+
+    cout << "=========================  ARRY S (ALGO C) =========================   \n";
+    int s = 6;
+    int ArryS[] = {-5, 1, -1, 2, -1, 3};
+    cout << "Expected: 4\n";    
+    algoC(ArryS, s);
+
+    cout << "=========================  ARRY T (ALGO C) =========================   \n";
+    int t = 6;
+    int ArryT[] = {0, 0, 0, 4, 0, 0};
+    cout << "Expected: 4\n";    
+    algoC(ArryT, t);
+
+    cout << "=========================  ARRY U (ALGO C) =========================   \n";
+    int u = 5;
+    int ArryU[] = {-10, -1, -3, 7, -20};
+    cout << "Expected: 7\n";   
+    algoC(ArryU, u);
+
+    cout << "=========================  ARRY V (ALGO C) =========================   \n";
+    int v = 9;
+    int ArryV[] = {2, -1, 2, 3, -4, 2, 2, -1, 2};
+    cout << "Expected: 7\n";    
+    algoC(ArryV, v);
+
+    cout << "=========================  ARRY W (ALGO C) =========================   \n";
+    int w = 9;
+    int ArryW[] = {4, -1, 2, 1, -7, 5, 4, -3, 2};
+    cout << "Expected: 9\n";   
+    algoC(ArryW, w);
+
+    cout << "=========================  ARRY X (ALGO C) =========================   \n";
+    int x = 5;
+    int ArryX[] = {1, 2, 3, 4, 5};
+    cout << "Expected: 15\n";   
+    algoC(ArryX, x);
+
+    cout << "=========================  ARRY Y (ALGO C) =========================   \n";
+    int y = 6;
+    int ArryY[] = {-2, 0, -1, 0, -3, 0};
+    cout << "Expected: 0\n";    
+    algoC(ArryY, y);
+
+    cout << "=========================  ARRY Z (ALGO C) =========================   \n";
+    int z = 10;
+    int ArryZ[] = {-2, 3, -1, 3, -2, 3, -1, 3, -2, 3};
+    cout << "Expected: 9\n";    
+    algoC(ArryZ, z);
 
 }
 
