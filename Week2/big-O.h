@@ -4,7 +4,7 @@ CS311 Kazumi Slott
 Your name: Agustin Martinez
 Your program number: 24
 Hours spent: 6 hours
-Describe any difficulties here: In Algo A, I couldn't find a better way to make one without doing an O(n^3) time complexity
+Describe any difficulties here: In Algo A, I couldn't find a better way to make one without doing an O(n^3) time complexity. Unsure if that's a good answer.
 
 Experiment:                             (in milliseconds)
                                         AlgoA       AlgoB      AlgoC
@@ -36,23 +36,96 @@ Please explain.
 ********************************************************************/
 
 
-//What is the runtime complexity of this algorithm? O(????)
+//What is the runtime complexity of this algorithm? O(n^3)
 //Even if you cannot get this function to work, you may guess the complexity and provide your answer above.
 int algoA(const int a[], int sz)//Don't change the function headers
 {
+    int max = 0;
+    int sum = 0;
+
+    for (int i = 0; i < sz; i++)
+    {   
+        //cout << "i: " << i << endl;
+
+        for (int j = 0; j + i < sz; j++)
+        {   
+            //cout << "j: " << j << endl;
+
+            //int start = j;
+            int end = j + i;
+
+            for(int start = j; start<=end; start++)
+            {   
+                //cout << "Array["<< start << " - " << end <<"] = " <<a[start] << endl;
+                
+                sum+=a[start];
+                //cout << "Sum: " << sum << endl;
+            }
+            if (max < sum)
+            {
+                max = sum;
+                //cout << "------------------ NEW MAX: " << max <<" ------------------" << endl;
+            }
+            sum = 0;
+
+        }
+    }
+    //cout << max << endl;
+    return max;
 
 }
 
-//What is the runtime complexity of this algorithm? O(????)
+//What is the runtime complexity of this algorithm? O(n^2)
 //Even if you cannot get this function to work, you may guess the complexity and provide your answer above..
 int algoB(const int a[], int sz)
 {
+    int max = 0;
+    int sum = 0;
 
+    for (int i = 0; i < sz; i++)
+    {
+
+        for (int j = i; j < sz; j++)
+        {
+
+            sum += a[j];
+
+            if (sum > max)
+            {
+                max = sum;
+            }
+        }
+
+        sum = 0;
+    }
+
+    //cout << max << "\n";
+    return max;
 }
 
-//What is the runtime complexity of this algorithm? O(????)
+//What is the runtime complexity of this algorithm? O(n)
 //Even if you cannot get this function to work, you may guess the complexity and provide your answer above..
 int algoC(const int a[], int sz)
 {
+    int sum = 0;
+    int max = 0;
 
+    for (int i = 0; i<sz; i++ ){
+
+        sum+=a[i];
+
+        if(sum < 0){
+            sum = 0;
+        }
+
+        if (max < sum){
+            max = sum;
+        }
+
+
+
+    }   
+
+    //cout << max << "\n";
+    return max;
 }
