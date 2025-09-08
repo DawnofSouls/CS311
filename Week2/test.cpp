@@ -95,7 +95,7 @@ int algoC(const int a[], int sz)
 
 int main()
 {   
-    /*
+    
     cout << "=========================  ARRY A (ALGO A) =========================   \n";
     int a = 7;
     int Arry[] = {9, 1, -16, 4, 12, -8, 6};
@@ -195,7 +195,7 @@ int main()
     cout << "Expected: 18\n";
     algoB(ArryP, p);
 
-    */
+    
 
     cout << "=========================  ARRY Q (ALGO C) =========================   \n";
     int q = 8;
