@@ -96,7 +96,7 @@ array<T> array<T>::operator+(const array<T>& other)
 template <class T>
 array<T>::~array()
 {
-  //????? //call destroy()
+  destroy(); //call destroy()
 }
 
 /*
