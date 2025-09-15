@@ -10,8 +10,8 @@ Replace the ?????s
 
 Your name:  Agustin Martinez
 Your programmer number: 24
-Hours spent?:
-Any difficulties?: 
+Hours spent?: 12 hours
+Any difficulties?: Dont remember this concept. Had to do a little review.
 ***********************************/
 #include <iostream>
 using namespace std;
@@ -36,11 +36,17 @@ class array
  private: 
   T* ar;
   const int size;
+  void destroy();
+  void copy(const array<T>& source);
+
  public:
   array(int sz);
   array();
   ~array();
   array operator+(const array<T>& other);
+  array(const array<T>& source);
+  array<T>& operator=(const array<T>& rhs);
+  
 
   class incomparable{};
 };
@@ -99,64 +105,72 @@ array<T>::~array()
   destroy(); //call destroy()
 }
 
-/*
+
 //private function
 template <class T>
 void array<T>::destroy()
 {
-  //if(????) //if an array exists
-    //????? //delete the entire array
-
-  //Don't forget to put the prototype of this function in the class definition
+  if (ar != NULL) {        
+    delete [] ar;         
+    ar = NULL;            
 }
-*/
+}
 
-/*
-//should this be private or public?
+
+
 template <class T>
-array<T>::array(const array<T>&  source)  //Copy constructor
+array<T>::array(const array<T>&  source)
+: ar(NULL),
+  size(source.size)  //Copy constructor
 {
-  //?????? //set ar and size of the new objet to NULL and 0
-  //?????? //call copy()
+  copy(source); 
 
-  //Don't forget to put the prototype of this function in the class definition
 }
-*/
 
-/*
+
+
 //private function
 template <class T>
 void array<T>::copy(const array<T>& source)
 {
-  //if(??????) //make a new array for "this" only if source has an array                          
-    {
-      //?????? //create a new array for this object
-      //?????? //the size of this object should be the same as that of source
-      //??????//copy each value from source and this object
-    }
-
-    //Don't forget to put the prototype of this function in the class definition
+  if (source.ar != NULL && source.size > 0) {   
+    ar = new T[size];                           
+    for (int i = 0; i < size; ++i)
+      ar[i] = source.ar[i];                     
+  } else {
+    ar = NULL;                                  
+  }
 }
-*/
 
-/*
+
+
 //should this be public or private?
 //the return type is array<T>& so we can do (a=b)=c;  What (a=b) returns needs to get changed by c.
 template <class T>
 array<T>& array<T>::operator=(const array<T>& rhs)
 {
-  //if(??????)//proceed only if the objects on the left and right hand sides of = are different.                     
-    {
-      //??????? //destroy the existing array "this" is pointing                                     
-      //??????? //call copy()
-    }
-  //no need to have else. If the objects on the left and right are the same (a = a), you don't need to do anything. If you procceded to the above section when a = a, the right side object(a) gets destroyed!!!
-  
-  //return ?????; //return this object (not the pointer)
+  if (this == &rhs) return *this;  // self-assign guard
 
-  //Don't forget to put the prototype of this function in the class definition
+  if (size == rhs.size) {
+    // same size: deep-copy elements
+    if (ar == NULL && rhs.ar != NULL && size > 0)
+      ar = new T[size];
+
+    if (ar != NULL && rhs.ar != NULL) {
+      for (int i = 0; i < size; ++i) ar[i] = rhs.ar[i];
+    } else if (rhs.ar == NULL) {
+      // rhs has no array; mirror that state
+      destroy();
+    }
+
+    return *this;
+  }
+
+  this->~array();                 
+  ::new (this) array<T>(rhs);     
+  return *this;
 }
-*/
+
 
 
 
