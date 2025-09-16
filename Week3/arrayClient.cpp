@@ -6,6 +6,7 @@ CS311
 A test client to test the array class
 ************************************/
 #include <istream>
+using namespace std;
 #include "array.h"
 
 void func()
