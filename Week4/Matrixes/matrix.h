@@ -10,8 +10,8 @@ copy constructor, copy() and operator=()
 For examples of matrix multiplication
 https://matrix.reshish.com/multCalculation.php 
 
-Your name:
-Your programmer number:
+Your name: Agustin Martinez
+Your programmer number: 24
 Hours spent?:
 Any difficulties?:
 ***********************************/
