@@ -57,6 +57,7 @@ public:
   ~Matrix();
   Matrix operator*(const Matrix& other);// matrix multiplication
   Matrix(const Matrix<T>& source);
+  Matrix<T>& operator=(const Matrix<T>& rhs);
 
   
   class size_error{};//exception class 
@@ -126,13 +127,21 @@ ostream& operator<<(ostream& o, const Matrix<T>& mrx)
 template<class T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& other)
 {
-  /*
-  //check if the 2 matrices are comparable. If m1 is mxn, m2 has to be nxk. 
-  if(??????????) //cannot compute because of incomparable sizes
-    ?????????; //throw an exception 
-  
-  ???? //multiple lines of code
-  */
+  if (this->C != other.R)
+    throw size_error();  // incomparable sizes
+
+  Matrix<T> result(this->R, other.C);
+
+  for (int i = 0; i < this->R; ++i)
+    for (int j = 0; j < other.C; ++j)
+    {
+      T sum = T(); // zero of T
+      for (int k = 0; k < this->C; ++k)
+        sum += this->m[i][k] * other.m[k][j];
+      result.m[i][j] = sum;
+    }
+
+  return result;
 }
 
 //destructor
@@ -196,13 +205,32 @@ void Matrix<T>::copy(const Matrix<T>& source)
 }
 
 
-/*
+
 template <class T>
 Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs)
 {
 
-  //Don't forget to make a prorotype. Is it private or public?
+  if (this == &rhs) return *this; 
+
+  // free current data
+  destroy();
+
+  // mirror rhs’ dimensions
+  R = rhs.R;
+  C = rhs.C;
+
+  if (R <= 0 || C <= 0 || rhs.m == NULL) {
+    m = NULL; // assigned from empty matrix
+    return *this;
+  }
+
+  // allocate and deep copy
+  m = new T*[R];
+  for (int r = 0; r < R; ++r)
+    m[r] = new T[C];
+
+  copy(rhs);
+  return *this;
 }
-*/
 
 #endif // end the definition here  
