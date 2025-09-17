@@ -108,11 +108,12 @@ ifstream& operator>>(ifstream& fin, Matrix<T>& mrx)
 template<class T>
 ostream& operator<<(ostream& o, const Matrix<T>& mrx)
 {
-  /*
-   ????? //multiple lines of code here
-   //use setw(10) to allocate 10 spaces to show each value
-   //If you don't know how setw() works, you could read page 3 of my CS111 lec notes "Lecture Notes 2-3: cout, formatted outputs, fin, getline, get, ignore"
-  */
+  for (int r = 0; r < mrx.R; ++r)
+  {
+    for (int c = 0; c < mrx.C; ++c)
+      o << setw(10) << mrx.m[r][c];
+    o << endl; // end each row
+  }
    return o;
   
 }
