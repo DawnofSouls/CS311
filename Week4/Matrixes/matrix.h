@@ -48,6 +48,8 @@ private:
   T** m; //2 dimensional dynamic array
   int R; //number of rows. R and C cannot be const because they change when we do m1 = m2
   int C; //number of columns
+  void destroy();
+
 
 public: 
   Matrix(int R, int C);
