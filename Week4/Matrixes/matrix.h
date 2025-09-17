@@ -49,13 +49,15 @@ private:
   int R; //number of rows. R and C cannot be const because they change when we do m1 = m2
   int C; //number of columns
   void destroy();
-
+  void copy(const Matrix<T>& source);
 
 public: 
   Matrix(int R, int C);
   Matrix();
   ~Matrix();
   Matrix operator*(const Matrix& other);// matrix multiplication
+  Matrix(const Matrix<T>& source);
+
   
   class size_error{};//exception class 
 };
@@ -161,23 +163,38 @@ void Matrix<T>::destroy()
 }
 
 
-/*
+
 template <class T>
 Matrix<T>::Matrix(const Matrix<T>& source)
 {
 
-  //Don't forget to make a prorotype. Is it private or public?
-}
-*/
+  R = source.R;
+  C = source.C;
 
-/*
+  if (R <= 0 || C <= 0 || source.m == NULL) {
+    m = NULL;
+    return;
+  }
+
+  // allocate rows
+  m = new T*[R];
+  for (int r = 0; r < R; ++r)
+    m[r] = new T[C];
+
+  // copy all elements
+  copy(source);
+}
+
+
+
 template <class T>
 void Matrix<T>::copy(const Matrix<T>& source)
 {
-
-  //Don't forget to make a prorotype. Is it private or public?
+  for (int r = 0; r < R; ++r)
+    for (int c = 0; c < C; ++c)
+      m[r][c] = source.m[r][c];
 }
-*/
+
 
 /*
 template <class T>
