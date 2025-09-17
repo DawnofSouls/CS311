@@ -137,23 +137,29 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other)
 template<class T>
 Matrix<T>::~Matrix()
 {
-  //call destroy()
+    destroy();
 }
 
-/*
+
 template<class T>
 void Matrix<T>::destroy()
 {
-  //destroy what is created in heap memory                                                                                                                          
-  //if m is not NULL do the following                                   
-     //HINT: delete each dynamic array pointed to by each slot of m                                                                                                                               
-     //delete m (m contains all rows)
+  if (m != NULL)
+  {
+    // delete each row first
+    for (int r = 0; r < R; ++r)
+      delete [] m[r];
 
-     //don't forget to reset all the data members
+    // delete the row pointer array
+    delete [] m;
 
-  //Don't forget to make a prorotype. Is it private or public?
+    // reset members
+    m = NULL;
+    R = 0;
+    C = 0;
+  }
 }
-*/
+
 
 /*
 template <class T>
