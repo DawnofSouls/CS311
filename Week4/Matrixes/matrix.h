@@ -12,7 +12,7 @@ https://matrix.reshish.com/multCalculation.php
 
 Your name: Agustin Martinez
 Your programmer number: 24
-Hours spent?:
+Hours spent?: 4
 Any difficulties?: Had to review the concepts once again
 ***********************************/
 #ifndef MATRIX_H
@@ -98,10 +98,13 @@ Matrix<T>::Matrix(int row, int col)
 template<class T>
 ifstream& operator>>(ifstream& fin, Matrix<T>& mrx)
 {
-  for (int r = 0; r < mrx.R; ++r)
-    for (int c = 0; c < mrx.C; ++c)
-      fin >> mrx.m[r][c];
+  for (int r = 0; r < mrx.R; ++r){
+    for (int c = 0; c < mrx.C; ++c){
 
+      fin >> mrx.m[r][c];
+    }
+  }
+  return fin;
 }
 
 /*output the matrix to screen in the following format. Allocate 10 spaces for each value.

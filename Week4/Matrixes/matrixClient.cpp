@@ -12,14 +12,14 @@ int main()
   Matrix<double> m1(4, 5);//4 rows x 5 columns
   Matrix<double> m2(4, 3);//4 rows x 3 columns
   ifstream fin;
-  //fin.open("/cs/slott/cs311/matrix_mult_bad.in");
-  fin.open("/Users/eikuld/Documents/CS311/CS311/Week4/Matrixes/matrix_mult_bad.in");
+  
+  fin.open("/cs/slott/cs311/matrix_mult_bad.in");
 
   cout << "filling m1 ----" << endl;
   fin >> m1;
   cout << "filling m2 ----" << endl;
   fin >> m2;
- 
+
   fin.close();
 
   cout << "printing m1 ----" << endl;

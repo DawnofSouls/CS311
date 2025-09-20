@@ -19,3 +19,8 @@
 Week4/Matrixes/test
 .gitignore
 Week4/Matrixes/test.cpp
+Week4/Matrixes/matrix_mult_bad.in
+Week4/Matrixes/matrix_mult.in
+Week4/Matrixes/matrixClient
+Week4/LinkedList/stack_L_TClient_part1.cpp
+Week4/LinkedList/stack_L_TClient_part2.cpp
