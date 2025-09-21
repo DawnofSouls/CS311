@@ -51,7 +51,7 @@ class Stack
   void copy(const Stack& source);
 
  public:
-  Stack() {/* ?????? */} //Implement a small function inside the class definition 
+  Stack() { top = -1 } //Implement a small function inside the class definition 
   Stack(const Stack& other);
   ~Stack();
   Stack& operator=(const Stack& rhs); //rhs = right hand side of the operator   LHS_obj = RHS_obj
