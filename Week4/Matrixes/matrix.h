@@ -180,20 +180,9 @@ template <class T>
 Matrix<T>::Matrix(const Matrix<T>& source)
 {
 
+  m = NULL;
   R = source.R;
   C = source.C;
-
-  if (R <= 0 || C <= 0 || source.m == NULL) {
-    m = NULL;
-    return;
-  }
-
-  // allocate rows
-  m = new T*[R];
-  for (int r = 0; r < R; ++r)
-    m[r] = new T[C];
-
-  // copy all elements
   copy(source);
 }
 
@@ -202,9 +191,17 @@ Matrix<T>::Matrix(const Matrix<T>& source)
 template <class T>
 void Matrix<T>::copy(const Matrix<T>& source)
 {
-  for (int r = 0; r < R; ++r)
+  if (source.m == NULL || R <= 0 || C <= 0) {
+    m = NULL;
+    return;
+  }
+
+  m = new T*[R];
+  for (int r = 0; r < R; ++r) {
+    m[r] = new T[C];
     for (int c = 0; c < C; ++c)
       m[r][c] = source.m[r][c];
+  }
 }
 
 
@@ -213,26 +210,12 @@ template <class T>
 Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs)
 {
 
-  if (this == &rhs) return *this; 
-
-  // free current data
-  destroy();
-
-  // mirror rhs’ dimensions
-  R = rhs.R;
-  C = rhs.C;
-
-  if (R <= 0 || C <= 0 || rhs.m == NULL) {
-    m = NULL; // assigned from empty matrix
-    return *this;
+  if (this != &rhs) {
+    destroy();        
+    R = rhs.R;        
+    C = rhs.C;
+    copy(rhs);        
   }
-
-  // allocate and deep copy
-  m = new T*[R];
-  for (int r = 0; r < R; ++r)
-    m[r] = new T[C];
-
-  copy(rhs);
   return *this;
 }
 
