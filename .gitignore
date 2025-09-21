@@ -24,3 +24,9 @@ Week4/Matrixes/matrix_mult.in
 Week4/Matrixes/matrixClient
 Week4/LinkedList/stack_L_TClient_part1.cpp
 Week4/LinkedList/stack_L_TClient_part2.cpp
+Week3/random.cpp
+Week4/LinkedList/BST_T
+Week4/LinkedList/test
+.gitignore
+Week4/LinkedList/test.cpp
+Week4/LinkedList/.vscode/settings.json
