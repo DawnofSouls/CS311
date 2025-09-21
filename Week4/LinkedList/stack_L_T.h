@@ -44,7 +44,7 @@ class Stack
   friend ostream& operator<< <T>(ostream& o, const Stack& s); //operator<< accesses the private members of Stack
 
  private:
-  //???? top;
+  int top;
  
  //helper functions - private because they won't be called from client
   void destroy();
