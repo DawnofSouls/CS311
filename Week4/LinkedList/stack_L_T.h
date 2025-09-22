@@ -29,10 +29,10 @@ class Node
   friend ostream& operator<< <T>(ostream& o, const Stack<T>& s); //operator<< accesses the private members of Node
 
  private:
-  //???? elem;
-  //???? next;  //check how right and left pointers are declared in BST class --> /cs/slott/cs211/BST_T.h
+  T elem;
+  Node<T>* next;  //check how right and left pointers are declared in BST class --> /cs/slott/cs211/BST_T.h
  public:
-  Node(){/*????=NULL;*/} //default constructor
+  Node(){next=NULL;} //default constructor
   Node(const T& e){elem = e; next = NULL;  /*???????*/} //You should set next to NULL too.
 };
 
@@ -44,7 +44,7 @@ class Stack
   friend ostream& operator<< <T>(ostream& o, const Stack& s); //operator<< accesses the private members of Stack
 
  private:
-  int top;
+  Node<T>* top;
  
  //helper functions - private because they won't be called from client
   void destroy();
