@@ -81,12 +81,13 @@ bool Stack<T>::operator==(const Stack<T>& rhs) const
   return p == NULL && q == NULL;
 }
 
-//Complexity of this operation: O(?????)
+//Complexity of this operation: O(n)
 template <class T>
 void Stack<T>::push(const T& val)
 {
-   //FYI, I have 3 lines of code here. You may have less or more.
-   //To make a new Node when the Node class is a template class, check insertNode() in /cs/slott/cs211/BST_T.h 
+  Node<T>* n = new Node<T>(val);  // new node was created in the heap
+  n->next = top;                  // node was linked to the top
+  top = n;      
 }
 
 
@@ -95,8 +96,10 @@ void Stack<T>::push(const T& val)
 template <class T>
 void Stack<T>::pop()
 {
-  //throw an exception if the stack is empty. (You shouldn't call pop if the stack is empty.)
-
+  if (empty()) throw Underflow();    // Error if stack is empty
+  Node<T>* value = top;              // Node created in the heap
+  top = top->next;                   // node underneath top becomes the new top
+  delete value;                      //  Former top deleted
 }
 
 
