@@ -60,12 +60,26 @@ class Stack
   void pop();
   T& getTop(); //Return type is T& so client can change the top value
   const T& getTop() const; //A const object needs to call a const member function
-  //??? operator==(????);
+  bool operator==(const Stack& rhs) const;
   
   //Make an empty exception class here. Underflow or/and Overflow? - You need to figure out where to throw an exception - I am throwing in 3 functions.
   //??????????
 };
 
+template <class T>
+bool Stack<T>::operator==(const Stack<T>& rhs) const
+{
+  const Node<T>* p = this->top;
+  const Node<T>* q = rhs.top;
+
+  while (p != NULL && q != NULL)
+  {
+    if (p->elem != q->elem) return false; //Iterate through stack while p and q are not equal to NULL
+    p = p->next;                          // and return false if it points to different value
+    q = q->next;
+  }
+  return p == NULL && q == NULL;
+}
 
 //Complexity of this operation: O(?????)
 template <class T>
