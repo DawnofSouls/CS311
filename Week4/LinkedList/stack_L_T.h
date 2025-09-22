@@ -155,7 +155,7 @@ ostream& operator<<(ostream& o, const Stack<T>& s)
 template <class T>
 Stack<T>::~Stack()
 {
-  //call destroy() 
+  destroy();
 }
 
 //helper function - called from destructor and operator=
@@ -163,7 +163,13 @@ Stack<T>::~Stack()
 template<class T>
 void Stack<T>::destroy() //This function will be called by destructor and operator=
 {
-  //destroy all nodes and reset the data members 
+ while (top != NULL)        // while node isnt null
+  {
+    Node<T>* value = top;  
+    top = top->next;       // Top becomes former top
+    delete value;          //formner top gets deleted
+  }
+  top = NULL;
 }
 
 
