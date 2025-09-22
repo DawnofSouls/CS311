@@ -133,15 +133,19 @@ const T& Stack<T>::getTop() const
 //     1
 //     --- Bottom ---
 
-//Complexity of this operation: O(?????)
+//Complexity of this operation: O(n)
 template <class T>
 ostream& operator<<(ostream& o, const Stack<T>& s)
 {
   //print from top to bottom.
 
   o << "--- Top ---" << endl;
-
-
+  const Node<T>* p = s.top;
+  while (p != NULL)
+  {
+    o << p->elem << endl;     //couts (p.elem)*
+    p = p->next;              // p moves onto next node
+  }
   o << "--- Bottom ---" << endl;
   return o; 
 }
