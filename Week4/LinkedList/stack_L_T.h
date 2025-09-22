@@ -55,7 +55,7 @@ class Stack
   Stack(const Stack& other);
   ~Stack();
   Stack& operator=(const Stack& rhs); //rhs = right hand side of the operator   LHS_obj = RHS_obj
-  bool empty() const{/*return ????????? */} //implement a small function inside the class definition
+  bool empty() const{ return top == NULL; } //returns true if stack is empty
   void push (const T& val);
   void pop();
   T& getTop(); //Return type is T& so client can change the top value
