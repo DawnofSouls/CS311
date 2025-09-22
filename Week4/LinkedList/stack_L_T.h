@@ -92,7 +92,7 @@ void Stack<T>::push(const T& val)
 
 
 
-//Complexity of this operation: O(?????)
+//Complexity of this operation: O(n)
 template <class T>
 void Stack<T>::pop()
 {
@@ -104,22 +104,22 @@ void Stack<T>::pop()
 
 
 
-//Complexity of this operation: O(?????)
+//Complexity of this operation: O(1)
 template <class T>
 T& Stack<T>::getTop()
 {
-  //thrown an exception if the stack is empty. You shouldn't call getTop if empty.
-  return ?????? //return the top element. Since the return type is T&, the client can change the top element.
+  if (empty()) throw Underflow(); //Checks if its empty
+  return top->elem;               //else return the top of the node
 }
 
 
 
-//Complexity of this operation: O(?????)
+//Complexity of this operation: O(1)
 template <class T>
 const T& Stack<T>::getTop() const
 {
-  //thrown an exception if the stack is empty. You shouldn't call getTop if empty.
-  return ?????? // same as the getTop() above. We need to provide this so a const object can call getTop(). Recall a const object can only call const member functions.
+  if (empty()) throw Underflow();   //Checks if its empty
+  return top->elem;                 //else return the top of the node
 }
 
 
