@@ -63,7 +63,7 @@ class Stack
   bool operator==(const Stack& rhs) const;
   
   //Make an empty exception class here. Underflow or/and Overflow? - You need to figure out where to throw an exception - I am throwing in 3 functions.
-  //??????????
+  class Underflow{};
 };
 
 template <class T>
