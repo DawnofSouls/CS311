@@ -51,7 +51,7 @@ class Stack
   void copy(const Stack& source);
 
  public:
-  Stack() { top = NULL } //Imagine this as array stack for top = -1 when empty as default declar
+  Stack() { top = NULL; } //Imagine this as array stack for top = -1 when empty as default declar
   Stack(const Stack& other);
   ~Stack();
   Stack& operator=(const Stack& rhs); //rhs = right hand side of the operator   LHS_obj = RHS_obj
@@ -159,7 +159,7 @@ Stack<T>::~Stack()
 }
 
 //helper function - called from destructor and operator=
-//Complexity of this operation: O(?????)
+//Complexity of this operation: O(n)
 template<class T>
 void Stack<T>::destroy() //This function will be called by destructor and operator=
 {
@@ -173,20 +173,20 @@ void Stack<T>::destroy() //This function will be called by destructor and operat
 }
 
 
-/*
-//Complexity of this operation: O(?????)
+
+//Complexity of this operation: O(n)
 //copy constructor
 template <class T>
 Stack<T>::Stack(const Stack& other)
 {
   //This is a copy constructor. This new object will get the same values as the other object. 
-  ????? //You need to initialize the data member, top
-  ????  //then call the copy()
+  top = NULL; //You need to initialize the data member, top
+  copy(other);  //then call the copy()
 }
-*/
 
 
-//Complexity of this operation: O(?????)
+
+//Complexity of this operation: O(n)
 //helper fuction. called from operator= and copy constructor
 template <class T>
 void Stack<T>::copy(const Stack& source) //source is the stack object copied from. 
@@ -196,15 +196,32 @@ void Stack<T>::copy(const Stack& source) //source is the stack object copied fro
   //The complexity of this function should be O(n). If you implement this function by calling push(), the complexity will probably be O(n^2).
   //Make this function without calling push().
 
-  if(source is not empty)//then copy all nodes from source to this
+  if (!source.empty()) // then copy all nodes from source to this
   {
-       Requirement: Follow the technique described in lecture and lecture notes "Lec on stackLL - copy()". Otherwise you will receive zero for this function.
+    
+    const Node<T>* src = source.top;  // copy the first node from source
+    top = new Node<T>(src->elem);
+    Node<T>* tail = top;
+    src = src->next;
+
+    
+    while (src != NULL)           // copy the remaining nodes in one take
+    {
+      tail->next = new Node<T>(src->elem);
+      tail = tail->next;
+      src = src->next;
+    }
+  }
+  else
+  {
+    // source is empty so make this empty
+    top = NULL;
   }
 }
 
 
-/*
-//Complexity of this operation: O(?????)
+
+//Complexity of this operation: O(1)
 template <class T>
 Stack<T>& Stack<T>::operator=(const Stack& rhs) //rhs = right hand side of the operator
 {
@@ -215,16 +232,16 @@ Stack<T>& Stack<T>::operator=(const Stack& rhs) //rhs = right hand side of the o
 
 
   //deep copy
-  if(???????) //Check the addresses of the left and right objects. If they are the same, you are trying to assign the same object   s = s;
-              //You copy only if the left object is not the same as the right object.
+  if(this != &rhs) //Check the addresses of the left and right objects. If they are the same, you are trying to assign the same object   s = s;
+                    //You copy only if the left object is not the same as the right object.
     {
-      ????? //destroy any memory space "this" is using. "this" may have elements already. call destroy()
-      ????? //call copy
+       destroy();  //destroy any memory space "this" is using. "this" may have elements already. call destroy()
+       copy(rhs);     //call copy
     }
-  return ???????; //return the "this" object (not the address of the "this" object). Notice the return type is not void. 
+  return *this;; //return the "this" object (not the address of the "this" object). Notice the return type is not void. 
                   //By returning the this object, we can use multiple assignment operators. 
                   //s1 = s2 = s3; same as s1 = s2.operator=(s3);  Now you can see why operator=() needs to return the this object (s2). 
 }
-*/
+
 
 #endif // end the definition here
