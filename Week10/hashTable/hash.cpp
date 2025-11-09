@@ -18,13 +18,14 @@ unsigned long hashNum(const string& key);
 
 class entry //this is basically a node
 {
+  private:
   friend class hashTbl;  //What do you need here if hashTbl needs to access the private members of entry?
   //If you don't say private or public, it is private by default.
   string ID;
   string name;
   int age;
   double GPA;
-  //????? next; //points to the next entry
+  entry* next; // points to the next entry
 
 public:
   entry() { ID = name = "", age = -999, GPA = -999.0, next = NULL; }
