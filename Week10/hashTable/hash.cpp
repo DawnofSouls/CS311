@@ -39,8 +39,8 @@ public:
 
 class hashTbl
 {
-  //????? table;   //table points to a dynamic array. Each slot points to an entry, which points to the next entry, ...
-  int size; //size of the array
+  entry** table; //table points to a dynamic array. Each slot points to an entry, which points to the next entry, ...
+int size; //size of the array
 public:
   hashTbl(int size);
   ~hashTbl();
