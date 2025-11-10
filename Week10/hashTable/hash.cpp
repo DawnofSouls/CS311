@@ -39,7 +39,7 @@ public:
 
 class hashTbl
 {
-  entry** table; //table points to a dynamic array. Each slot points to an entry, which points to the next entry, ...
+entry** table; //table points to a dynamic array. Each slot points to an entry, which points to the next entry, ...
 int size; //size of the array
 public:
   hashTbl(int size);
@@ -62,8 +62,13 @@ public:
 hashTbl::hashTbl(int s)
 {
   //set private member size
+  size = s;
   //make a dynamic array that has s slots
+  table = new entry*[size];
   //put NULL in each slot of the array. Remember Each slot contains a pointer to an entry.
+  for (int i = 0; i < size; i++){
+    table[i] = NULL;
+  }
 }
 
 //destructor
@@ -72,6 +77,18 @@ hashTbl::~hashTbl()
   //you need to destroy everything created using new.
   //destroy all the entries belong to each slot of the table
   //don't forget to destroy the dynamic array
+  for(int i=0; i<size; i++){
+  
+      entry* cur = table[i];
+      entry* temp;
+      while(cur != NULL){
+        temp = cur->next;
+        delete cur;
+        cur = temp;
+      }
+
+  }
+  delete []table;
 }
 
 //insert an entry to the table
