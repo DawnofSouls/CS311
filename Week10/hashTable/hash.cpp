@@ -122,12 +122,7 @@ entry* hashTbl::get(const string& key) const
 
   //look for key in the linked list. Return the pointer to the entry with key.
   entry* cur = table[index];
-  while (cur != NULL){
-    if(cur->ID == key){
-      return cur;
-    }
-    cur = cur->next;
-  }
+
 
 
   //After traversed the list, if key wan't found, throw exception just like above where the slot was empty. 
@@ -142,13 +137,33 @@ entry hashTbl::remove(const string& key)
  //Don't forget to return the entry found
  //Don't make a memory leak
 
-  /*
- if (the slot is empty)
+  int index = (hashNum(key)) % size;
+  
+ if (table[index] == NULL)
    throw underflow(key);
 
- if (//traversed the list, but didn't find key)
-   throw underflow(?????);
-  */
+  entry* removeTarget = get(key);
+  entry removedEntry = *removeTarget;  //makes a copy
+
+  if(table[index] == removeTarget){
+    table[index] = removeTarget->next;    // removes the head
+  } else {
+    entry* prev = table[index];
+    while (prev != NULL && prev->next != removeTarget) {
+      prev = prev->next;
+    }
+    prev->next = removeTarget->next;       //unlink the node by having the previous point to the targeted next pointer
+  }
+  
+
+  delete removeTarget;
+  return removedEntry;
+
+  /*
+ if (//traversed the list, but didn't find key) 
+   throw underflow(key);
+   */
+  
 }
 
 //well known hash function called djb2
