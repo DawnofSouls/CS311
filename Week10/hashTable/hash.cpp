@@ -98,10 +98,16 @@ void hashTbl::put(entry* e)
   //This function is like LL::addFront() from CS211
 
   //string key = use ID for key 
+  string key = e->ID;
   //int index = (call hashNum with key) % (table size); 
+  int index = (hashNum(key)) % size;
   //entry* cur = make cur point to the first entry
+  entry* cur = table[index];
 
   //add the entry at the beginning of the list coming out of index	
+  e->next = cur;
+  table[index] = e;
+
 }
 
 //look up key and return the pointer to it. Assume keys are unique.
@@ -109,14 +115,23 @@ entry* hashTbl::get(const string& key) const
 {
   //This function is like LL::search() from CS211
 
-  /*
-  if (the slot is empty )
+  int index = (hashNum(key)) % size;
+  
+  if ( table[index] == NULL)
       throw underflow(key);
-  */
 
   //look for key in the linked list. Return the pointer to the entry with key.
+  entry* cur = table[index];
+  while (cur != NULL){
+    if(cur->ID == key){
+      return cur;
+    }
+    cur = cur->next;
+  }
+
 
   //After traversed the list, if key wan't found, throw exception just like above where the slot was empty. 
+  throw underflow(key);
 }
 
 //remove the entry with key. Assume keys are unique.
