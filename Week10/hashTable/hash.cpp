@@ -4,8 +4,9 @@ CS311
 
 Your name: Agustin Martinez
 Your programmer number: 24
-Hours spent: ???
-Any difficulties?: ??????
+Hours spent: 5
+Any difficulties?: Kept getting segmented fault but I think I fixed that. Confused on remove() since I feel like
+                // second underflow isn't needed as get() already takes care of that.
 *********************/
 #include <iostream>
 #include <fstream> 
@@ -192,7 +193,7 @@ const int SIZE = 1009; //For closed addressing, you don't need to worry about lo
 int main()
 {
   //make a hash table object called students with SIZE slots 
-
+  hashTbl students(SIZE);
 
   int count[SIZE] = {0}; //set all slots to 0. Used to see count in each index
   ifstream fin;
